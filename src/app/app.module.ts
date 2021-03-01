@@ -11,6 +11,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AgGridModule.withComponents([]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
