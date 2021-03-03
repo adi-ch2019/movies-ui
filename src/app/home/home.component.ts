@@ -13,12 +13,7 @@ export class HomeComponent implements OnInit {
 
   columnDefs = [
 
-    { field: 'Poster', cellRenderer :ImageFormatterComponent},
-    { field: 'Poster',  cellRenderer: (params: { value: string; }) => {
-      // put the value in bold
-      return '<img src=\"{{'+ params.value +'}}\">';
-  }},
-    { field: 'Poster',resizable: true },
+   
     { field: 'Title',resizable: true, sortable: true, filter: true },
     { field: 'listingType',resizable: true },
     { field: 'imdbRating',resizable: true },
