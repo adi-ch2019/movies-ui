@@ -5,6 +5,7 @@ module.exports =function()
   return{
     Movies:_.times(100,function(i){
       return{
+        id:i,
         Language:faker.finance.currencyName(),
         Location:faker.address.city(),
         Plot:faker.lorem.sentences(),

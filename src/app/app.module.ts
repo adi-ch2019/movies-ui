@@ -14,12 +14,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AgGridModule } from 'ag-grid-angular';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {  throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { Movie } from './movies';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private _baseURL = "http://localhost:1999/Movies.json";
+  private _baseURL = "http://localhost:1999/Movies";
 
   constructor(private http:HttpClient){}
   handleError(error: HttpErrorResponse) {
@@ -28,7 +29,9 @@ export class DataService {
 
   public sendGetRequest(){
     console.log("sendGetRequest");
-    return this.http.get('http://localhost:1999/Movies').pipe(catchError(this.handleError));
+    return this.http.get<Movie[]>(this._baseURL).pipe(catchError(this.handleError));
   }
-
+  getMovieById(id:string){
+    return this.http.get<Movie>(this._baseURL+"/"+id).pipe(catchError(this.handleError));
+  }
 }
