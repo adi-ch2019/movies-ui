@@ -1,7 +1,0 @@
-{
-  "/api/Movies": {
-    "target": "http://localhost:1999",
-    "secure": false,
-    "changeOrigin": true
-  }
-}

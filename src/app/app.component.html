@@ -1,9 +1,29 @@
-<mat-toolbar color="primary">
-  <h1>
-    movies ui
-  </h1>
-  <button mat-button routerLink="/">Home - AG Grid</button>
-  <button mat-button routerLink="/about">About</button>
 
-</mat-toolbar>
-<router-outlet></router-outlet>
+<nav class='navbar navbar-expand navbar-light bg-light'>
+  <a class='navbar-brand'>Movies App</a>
+
+
+ <ng-container >
+ <ul class='nav nav-pills' >
+
+  <li ><a class='nav-link' routerLinkActive='active' [routerLink]="['/ag-grid-home']">Movie List</a></li>
+
+<li>
+  <a class='nav-link'  routerLinkActive='active' [routerLink]="['/about']" >
+    About
+  </a>
+</li>
+
+
+  </ul>
+
+</ng-container>
+
+
+
+</nav>
+<ng-container>
+  <router-outlet></router-outlet>
+</ng-container>
+
+
