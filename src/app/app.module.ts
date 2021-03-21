@@ -7,7 +7,7 @@ import { AgGridHomeComponent } from './ag-grid-home/ag-grid-home.component';
 import { AboutComponent } from './about/about.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { AgGridDetailsComponent } from './ag-grid-details/ag-grid-details.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,8 @@ import { AgGridDetailsComponent } from './ag-grid-details/ag-grid-details.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <div class='card'
     >
   <div class='card-header'>
-    {{pageTitle + ': ' + movie?.title}}
+    {{ movie?.fullTitle}}
   </div>
 
   <div class='card-body'>
@@ -17,41 +17,24 @@
           <div class='col-md-8'>{{movie?.plot}}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Sound Effects:</div>
-          <div class='col-md-8'>{{movie?.soundeffects}}</div>
-          <div class='col-md-8'>{{movie?.soundeffects}}</div>
+          <div class='col-md-4'>Runtime:</div>
+          <div class='col-md-8'>Mins : {{movie?.runtimeMins}}; Hours: {{movie?.runtimeStr}}</div>
+      
         </div>
         <div class='row'>
-          <div class='col-md-4'>Stills:</div>
+          <div class='col-md-4'>Image:</div>
           <table style="padding: 10 10 10 10;">
             <tbody>
               <td>
                 <div class='col-md-8'>
                   <img
-                         [src]='movie?.stills[0]'
+                         [src]='movie?.image'
                          [title]='movie?.title'
                          [style.width.px]='50'
                          [style.margin.px]='2'>
                 </div>
               </td>
-              <td>
-                <div class='col-md-8'>
-                  <img
-                         [src]='movie?.stills[1]'
-                         [title]='movie?.title'
-                         [style.width.px]='50'
-                         [style.margin.px]='2'>
-                </div>
-              </td>
-              <td>
-                <div class='col-md-8'>
-                  <img
-                  [src]='movie?.stills[2]'
-                  [title]='movie?.title'
-                  [style.width.px]='50'
-                  [style.margin.px]='2'>
-                </div>
-              </td>
+
             </tbody>
           </table>
 
@@ -59,9 +42,15 @@
 
         </div>
         <div class='row'>
-          <div class='col-md-4'>IMDB Rating:</div>
+          <div class='col-md-4'>Stars:</div>
           <div class='col-md-8'>
-           {{movie?.imdbRating}}
+           {{movie?.stars}}
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Directors:</div>
+          <div class='col-md-8'>
+           {{movie?.directors}}
           </div>
         </div>
       </div>
@@ -70,7 +59,7 @@
         <img class='center-block img-responsive'
              [style.width.px]='200'
              [style.margin.px]='2'
-             [src]='movie?.poster'
+             [src]='movie?.image'
              [title]='movie?.title'>
       </div>
     </div>

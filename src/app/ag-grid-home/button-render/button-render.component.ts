@@ -32,7 +32,7 @@ export class ButtonRenderComponent implements ICellRendererAngularComp {
       const params = {
         event: $event,
         // rowData: this.params.node.data
-        rowData:this.params.node.data.imdbID
+        rowData:this.params.node.data.id
         // ...something
       }
       //console.log(this.params.node.data.imdbID);

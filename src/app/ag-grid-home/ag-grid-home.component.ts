@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import  MoviesJson  from '../../assets/items.json';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 import { ButtonRenderComponent } from './button-render/button-render.component';
@@ -27,26 +26,24 @@ export class AgGridHomeComponent implements OnInit {
   }
 
   ];
-  movie: any[] = MoviesJson.items;
-  public items: any[] = MoviesJson.items;
+  public rowData: any;
   rowDataClicked1 = {};
   frameworkComponents: any;
 
-  //constructor(private dataService: DataService, private router: Router) {}
-  constructor( private router: Router) {
+  constructor(private dataService: DataService, private router: Router) {
     this.frameworkComponents = {
-      buttonRender: ButtonRenderComponent,
+      buttonRender: ButtonRenderComponent
     }
   }
   ngOnInit() {
-    // this.dataService.sendGetRequest().subscribe((data: any[]) => {
-    //   console.log(Object.values(data) );
-    //   this.items = Object.values(data)[0];
-    // });
+    this.dataService.sendGetRequest().subscribe((data: any[]) => {
+     // console.log(Object.values(data) );
+      this.rowData = Object.values(data)[0];
+    });
   }
   onBtnClick1(e: { rowData: {}; }) {
     this.rowDataClicked1 = e.rowData;
-    //console.log(e.rowData);
+   //console.log(e.rowData);
     this.router.navigate(['/movies/'+e.rowData+'']);
   }
 }
