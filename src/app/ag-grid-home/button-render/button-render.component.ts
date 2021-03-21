@@ -9,10 +9,10 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
   //   <button type="button" (click)="onClick($event)">{{label}}</button><br/>
   //   <a [routerLink]="['/movies', movie.imdbID]"></a>
   //   `
-  templateUrl:'./button-renderer.component.html'
+  templateUrl:'./button-render.component.html'
 })
 
-export class ButtonRendererComponent implements ICellRendererAngularComp {
+export class ButtonRenderComponent implements ICellRendererAngularComp {
 
   params : any;
   label!: string;
@@ -32,7 +32,7 @@ export class ButtonRendererComponent implements ICellRendererAngularComp {
       const params = {
         event: $event,
         // rowData: this.params.node.data
-        rowData:this.params.node.data.imdbID
+        rowData:this.params.node.data.id
         // ...something
       }
       //console.log(this.params.node.data.imdbID);

@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-
-
+import { AgGridHomeComponent }  from './ag-grid-home/ag-grid-home.component';
+import {AboutComponent} from './about/about.component';
+import{AgGridDetailsComponent} from '../app/ag-grid-details/ag-grid-details.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent },
+  { path: 'ag-grid-home', component: AgGridHomeComponent },
   { path: 'about', component: AboutComponent },
   {
     path: 'movies/:id',
-    component: MovieDetailComponent 
+    component: AgGridDetailsComponent
   }
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
