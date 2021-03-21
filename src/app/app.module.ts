@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AgGridHomeComponent } from './ag-grid-home/ag-grid-home.component';
 import { AboutComponent } from './about/about.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { AgGridDetailsComponent } from './ag-grid-details/ag-grid-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AgGridHomeComponent,
-    AboutComponent
+    AboutComponent,
+    AgGridDetailsComponent
   ],
   imports: [
     BrowserModule,

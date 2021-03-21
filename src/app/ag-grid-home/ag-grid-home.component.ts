@@ -3,6 +3,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import  MoviesJson  from '../../assets/items.json';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
+import { ButtonRenderComponent } from './button-render/button-render.component';
 @Component({
   selector: 'mov-ag-grid-home',
   templateUrl: './ag-grid-home.component.html',
@@ -11,21 +13,40 @@ import { DataService } from '../services/data.service';
 export class AgGridHomeComponent implements OnInit {
 
   columnDefs = [
+
     { field: "title" ,resizable: true, sortable: true, filter: true },
     { field: "releaseState" , resizable: true },
     { field: "genres" , resizable: true,  filter: true },
-    { field: "contentRating" , resizable: true,  filter: true }
+    { field: "contentRating" , resizable: true,  filter: true },
+    {  headerName: '',
+    cellRenderer: 'buttonRender',
+    cellRendererParams: {
+      onClick: this.onBtnClick1.bind(this),
+      label:'Show Details'
+    }
+  }
+
   ];
   movie: any[] = MoviesJson.items;
   public items: any[] = MoviesJson.items;
+  rowDataClicked1 = {};
+  frameworkComponents: any;
 
-  //constructor(private dataService: DataService) {}
-  constructor() {}
+  //constructor(private dataService: DataService, private router: Router) {}
+  constructor( private router: Router) {
+    this.frameworkComponents = {
+      buttonRender: ButtonRenderComponent,
+    }
+  }
   ngOnInit() {
     // this.dataService.sendGetRequest().subscribe((data: any[]) => {
     //   console.log(Object.values(data) );
     //   this.items = Object.values(data)[0];
     // });
   }
-
+  onBtnClick1(e: { rowData: {}; }) {
+    this.rowDataClicked1 = e.rowData;
+    //console.log(e.rowData);
+    this.router.navigate(['/movies/'+e.rowData+'']);
+  }
 }
