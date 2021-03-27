@@ -23,7 +23,7 @@
     "ag-grid-angular": "^25.1.0",
     "ag-grid-community": "^25.1.0",
     "bootstrap": "^4.6.0",
-    "faker": "^5.4.0",
+    "faker": "^5.5.1",
     "json-server": "^0.16.3",
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",

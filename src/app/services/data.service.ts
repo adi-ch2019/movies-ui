@@ -8,7 +8,7 @@ import { filter, map, startWith,findIndex} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-//private REST_API_SERVER = "https://imdb-api.com/en/API/InTheaters/{API_KEY}";
+//private REST_API_SERVER = "http://imdb-api.com/en/API/InTheaters/{API_KEY}";
 private REST_API_SERVER = "https://imdb-api.com/en/API/InTheaters/{API_KEY}";
 
 
@@ -19,6 +19,7 @@ constructor(private httpClient: HttpClient) {}
 public sendGetRequest() {
   //return this.httpClient.get(this.REST_API_SERVER);
   //console.log('sendGetRequest');
+  this.allData=this.httpClient.get<any>("assets/items.json");
   return this.httpClient.get<any>("assets/items.json");
 }
 
