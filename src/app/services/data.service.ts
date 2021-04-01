@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import{IMovie} from '../interfaces/IMovie';
 
-import { filter, map, startWith,findIndex} from 'rxjs/operators';
+import { filter, map, startWith,findIndex, catchError, retry} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,28 @@ private REST_API_SERVER = "https://imdb-api.com/en/API/InTheaters/{API_KEY}";
 
 
 constructor(private httpClient: HttpClient) {}
-public sendGetRequest() {
-  //return this.httpClient.get(this.REST_API_SERVER);
-  //console.log('sendGetRequest');
-  return this.httpClient.get<any>("assets/items.json");
+
+handleError(error: HttpErrorResponse) {
+  let errorMessage = 'Unknown error!';
+  if (error.error instanceof ErrorEvent) {
+    // Client-side errors
+    errorMessage = `Error: ${error.error.message}`;
+  } else {
+    // Server-side errors
+    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+  }
+  window.alert(errorMessage);
+  return throwError(errorMessage);
+}
+
+public getAllMovies() {
+  //return this.httpClient.get(this.REST_API_SERVER).pipe(catchError(this.handleError));
+  //console.log('getAllMovies').pipe(catchError(this.handleError));
+  return this.httpClient.get<IMovie[]>("assets/items.json").pipe(retry(3),catchError(this.handleError));
 }
 
 public getMovieById(id:string){
-  this.allData=this.httpClient.get<any[]>("assets/itemsCollection.json");
+  this.allData=this.httpClient.get<IMovie[]>("assets/itemsCollection.json").pipe(retry(3),catchError(this.handleError));;
 
   const index  = this.allData.pipe(
   map((movie: IMovie[]) => movie.find(p => p.id === id))

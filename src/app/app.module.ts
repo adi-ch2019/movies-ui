@@ -8,6 +8,12 @@ import { AboutComponent } from './about/about.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { AgGridDetailsComponent } from './ag-grid-details/ag-grid-details.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { MovieReducer } from './store/moves.reducer';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { MoviesEffects } from './store/movies.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     AgGridModule.withComponents([]),
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({applicationState: MovieReducer}),
+
+    EffectsModule.forRoot([MoviesEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
